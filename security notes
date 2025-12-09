@@ -1,0 +1,24 @@
+DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, 
+HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, 
+DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, 
+BasicAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, 
+AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+
+ExceptionTranslationFilter => AuthenticationException, AccessDeniedException
+ExceptionTranslationFilter is the Spring Security filter that catches 
+authentication/authorization exceptions and translates them into appropriate 
+HTTP-level behavior (login redirect, 401/403, error pages).
+🧩 How to Customize Its Behavior
+You usually customize it via:
+AuthenticationEntryPoint (for what happens on unauthenticated access — login redirect / 401 / challenge)
+AccessDeniedHandler (for what happens on authorization failure — 403 / error page / JSON response)
+RequestCache — to control whether original request is cached or not (for “after login → redirect back” behavior)
+
+📌what does @EnableWebSecurity actually do?
+@EnableWebSecurity disables Spring Boot’s default security auto-configuration and enables full, explicit web security customization, like:
+Custom filter chain definitions
+Custom authentication handlers
+Fine-grained WebSecurity configuration
+Basically:
+Without @EnableWebSecurity → Boot manages security
+With @EnableWebSecurity → YOU manage security
