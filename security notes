@@ -20,5 +20,5 @@ Custom filter chain definitions
 Custom authentication handlers
 Fine-grained WebSecurity configuration
 Basically:
-Without @EnableWebSecurity → Boot manages security
-With @EnableWebSecurity → YOU manage security
+Without @EnableWebSecurity → Boot manages security.
+With @EnableWebSecurity → YOU manage security.
